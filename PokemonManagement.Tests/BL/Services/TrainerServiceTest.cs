@@ -33,6 +33,7 @@ namespace PokemonManagement.Tests.BL.Services
             });
         }
 
+        //nije sretan
         [Fact]
         public void Evolve_ShouldThrowIfNotValidEvolution()
         {

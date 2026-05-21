@@ -32,7 +32,34 @@ namespace PokemonManagement.BL.Services
 
         public void Evolve(TrainerPokemon ownedPokemon)
         {
-            // TODO Implement
+            if (ownedPokemon.Level < 16)
+            {
+                throw new PokemonLogicException("level too low");
+            }
+
+            if(ownedPokemon.Trainer.Candies >= 50)
+            {
+                throw new PokemonLogicException("not enough candies");
+            }
+            
+            if(ownedPokemon.Pokemon.EvolvesTo != null)
+            {
+                throw new PokemonLogicException("no available evolution");
+            }
+
+            Pokemon evolvedPokemon = new Pokemon {
+               
+                Name = ownedPokemon.Pokemon.EvolvesTo.Name,
+                EvolvesTo = ownedPokemon.Pokemon.EvolvesTo.EvolvesTo
+            };
+
+            TrainerPokemon evolvedTrainerPokemon = new TrainerPokemon
+            {
+
+            };
+
+
+            //_repository.Update(ownedPokemon);
         }
     }
 }
